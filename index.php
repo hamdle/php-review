@@ -1,12 +1,17 @@
 <?php
 
-require 'functions.php';
+
+$query = require 'bootstrap.php';
+
 require 'Task.php';
 
-$pdo = getDatabase();
+$task_arr = $query->selectAll('todos');
 
-$task_arr = fetchAllTasks($pdo);
+$tasks = array_map(function ($task) {
+    $t = new Task();
+    $t->description = $task->description;
+    $t->completed = (bool)$task->completed;
+    return $t;
+}, $task_arr);
 
-$task_arr[0]->complete();
-
-var_dump($task_arr);
+die(var_dump($tasks));
