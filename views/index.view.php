@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
+<?php require 'partials/head.php'; ?>
+
     <h1>My Tasks</h1>
+
+    
 
     <ul>
         <?php foreach ($tasks as $task) : ?>
@@ -28,6 +25,4 @@
 
     </ul>
 
-</body>
-
-</html>
+<?php require 'partials/footer.php'; ?>
