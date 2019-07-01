@@ -1,7 +1,12 @@
 <?php
 
-$database = require 'bootstrap.php';
+$database = require 'core/bootstrap.php';
 
-$tasks = $database->selectAll('todos');
+$router = new Router;
 
-require 'index.view.php';
+require 'routes.php';
+
+$uri = trim($_SERVER['REQUEST_URI'], '/');
+
+//var_dump($router->direct($uri));
+require $router->direct($uri);
