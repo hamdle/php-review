@@ -2,11 +2,11 @@
 
 $database = require 'core/bootstrap.php';
 
-$router = new Router;
-
-require 'routes.php';
-
 $uri = trim($_SERVER['REQUEST_URI'], '/');
 
-//var_dump($router->direct($uri));
-require $router->direct($uri);
+// Chaining-style
+//require Router::load('routes.php')->direct($uri);
+
+$router = Router::load('routes.php');
+$requested_uri = $router->direct($uri);
+require $requested_uri;

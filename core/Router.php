@@ -3,6 +3,12 @@
 class Router {
     protected $routes = [];
 
+    public static function load($route_file) {
+        $router = new self; // or $router = new static;
+        require $route_file;
+        return $router;
+    }
+
     public function register($routes) {
         $this->routes = $routes;
     }
