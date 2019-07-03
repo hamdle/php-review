@@ -17,4 +17,19 @@ class QueryBuilder {
         // Stored as objects
         return $statement->fetchAll(PDO::FETCH_CLASS); 
     }
+
+    public function insert($table, $params) {
+        $sql = sprintf(
+            'insert into %s (%s) values (%s)',
+            $table, 'two', 'three'
+        );
+
+        $message = "Inserting value into database";
+        var_dump($message);
+        var_dump($sql);
+        //die(var_dump($sql));
+        //$statement = $this->pdo->prepare("insert into {$table}");
+    
+        //$statement->execute(['name' => 'Eric']);
+    }
 }
